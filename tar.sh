@@ -14,3 +14,5 @@ tar --sort=name \
 -cf $shpath/../chadnet-wiki.tar $shpath/../*
 
 echo "Tar file created"
+perl -i -pe "s/<p>Download <a href=\"chadnet-wiki.tar\".*/<p>Download <a href=\"chadnet-wiki.tar\">the archive<\/a> ($(bc <<< "scale=2; $(ls -l chadnet-wiki.zip | awk '{ print $5 }')/1024^3") GB) of the wiki\!<\/p>/" index.html
+echo "Index updated"
