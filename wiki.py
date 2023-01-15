@@ -5,6 +5,7 @@ from operator import itemgetter
 from chadnet import escape, gold, getpath
 from subprocess import call
 from shutil import copyfile
+import datetime
 
 location = getpath(__file__)
 
@@ -182,13 +183,15 @@ def makesearch(links):
 
 
 gold("CHADNET SYSTEM ALPHA: WIKI SYSTEM v3.0")
-copyfile(f'{location}/../db.chad', f'{location}/backups/db.chad')
+date = datetime.datetime.now().strftime("%d-%m-%Y")
+copyfile(f'{location}/../db.chad', f'{location}/backups/db{date}.chad')
 links = getlinks(f'{location}/../db.chad')
 links = sortlist(links)
 linkcount = len(links)
 writedb(f'{location}/../db.chad', links)
 print("Sorted db.chad")
 cats = getcats(f'{location}/../cat.chad')
+copyfile(f'{location}/../cat.chad', f'{location}/backups/cat{date}.chad')
 cats = sortlist(cats)
 catcount = len(cats)
 writedb(f'{location}/../cat.chad', cats)
