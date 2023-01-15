@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHADNET_SYSTEM_ALPHA_TITLE — Chadnet</title>
+  <link rel="icon" href="chad.ico">
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CHADNET_SYSTEM_ALPHA_TITLE — Chadnet">
+  <meta property="og:description" content="The greatest website on the interwebz!">
+  <meta property="og:image" content="https://wiki.chadnet.org/chad.png">
+</head>
+<body>
+  <script>var theme = localStorage.getItem('theme') || sessionStorage.getItem('theme'); if(theme){document.body.setAttribute('data-theme', theme);}</script>
+  <h1>CHADNET_SYSTEM_ALPHA_TITLE</h1>
+  <div style="text-align: center;">
+    <a href="index.html"><img class="epic" src="chad.png"></a>
+  </div>
+  <hr>
+  <p><a href="index.html">Home</a> <span class="right">Links: CHADNET_SYSTEM_ALPHA_LINKS</span></p>
