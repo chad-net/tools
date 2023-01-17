@@ -11,14 +11,14 @@ Base files in tools/templates)
 
 
 ## images
-<a href="files/image.jpeg" target="_blank"><img class="center" src="files/image.jpeg"></a>
+`<a href="files/image.jpeg" target="_blank"><img class="center" src="files/image.jpeg"></a>`
 
 if there are two successive images you put <br> between them
 
 
 
 ## captions
-<p class="c">
+`<p class="c">`
 
 
 ## what is removed
