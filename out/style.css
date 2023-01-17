@@ -115,6 +115,12 @@ body {
   text-align: justify;
 }
 
+blockquote {
+  border-left: 4px solid var(--fg);
+  margin-left: 0px;
+  padding-left: 20px;
+}
+
 p, li, blockquote {
   line-height: 1.6em;
 }
@@ -262,4 +268,3 @@ div.test h1 {
   text-align: center;
   text-shadow: 2px 2px black;
 }
-
