@@ -25,6 +25,8 @@ def getlinks(filename):
       elif pos % 5 == 0: #BLANK
         links.append([title, url, cats, desc])
       pos += 1
+    if pos % 5 == 0:
+      links.append([title, url, cats, desc])
   return links
 
 def getcats(filename):
@@ -41,6 +43,8 @@ def getcats(filename):
       elif pos % 4 == 0: #BLANK
         cats.append([title, url, parents])
       pos += 1
+    if pos % 4 == 0:
+      cats.append([title, url, parents])
   return cats
 
 def ignore(text, safelist):
