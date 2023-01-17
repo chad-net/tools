@@ -200,7 +200,7 @@ def delemptytags(child, soup):
       for content in d.contents:
         if str(content).isspace():
           clear = False
-          d.extract()
+          content.extract()
   if len(child.contents) == 0:
     return None
   return child
@@ -215,7 +215,7 @@ handlers = {
 url = geturl()
 soup = downloadpage(url)
 filename = getfilename(url)
-gold('CHADNET SYSTEM ALPHA: SUBSTACK v1.0')
+gold('CHADNET SYSTEM ALPHA: SUBSTACK v1.1')
 print('URL:        ' + url)
 title = gettitle(soup)
 escapedtitle = escape(title)
