@@ -249,9 +249,9 @@ print('------------------')
 f = open(f'{location}/out/' + filename, 'w')
 
 if subtitle is not None:
-  head = "templates/HEAD_SUBTITLE"
+  head = "templates/HEAD_SUBTITLE.html"
 else:
-  head = "templates/HEAD"
+  head = "templates/HEAD.html"
 
 with open(f'{location}/{head}', 'r') as headfile:
   for line in headfile:
