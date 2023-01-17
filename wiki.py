@@ -104,7 +104,7 @@ def getlinkicon(url):
   return image
 
 def makecats(cats):
-  with open(f'{location}/templates/HEAD_CAT', 'r') as head:
+  with open(f'{location}/templates/HEAD_CAT.html', 'r') as head:
     for cat in cats:
       #print(cat[1])
       with open(f'{location}/../' + cat[1] + '.html', 'w') as f:
@@ -157,7 +157,7 @@ def convertsearch(text):
 
 def makesearch(links):
   with open(f'{location}/../search.html', 'w') as f:
-    with open(f'{location}/templates/HEAD_SEARCH', 'r') as head:
+    with open(f'{location}/templates/HEAD_SEARCH.html', 'r') as head:
       for line in head:
         f.write(line)
     for link in links:
