@@ -1,14 +1,14 @@
 :root {
-  --keyframes-from: #300000;
-  --keyframes-to: #4f0100;
-  --bg: #4f0100;
+  --keyframes-from: slategray;
+  --keyframes-to: darkslategray;
+  --bg: darkslategray;
   --fg: white;
   --link: gold;
   --link-hover: goldenrod;
-  --opacity: 0.9;
-  --hr-bg: url('files/xmas.gif');
-  --hr-height: 23px;
-  --hr-border-top: 0px;
+  --opacity: 0.75;
+  --hr-bg: none;
+  --hr-height: 0px;
+  --hr-border-top: 2px solid var(--fg);
 }
 
 body[data-theme='chadnet'] {
@@ -188,6 +188,13 @@ hr {
   width: 1em !important;
   vertical-align: -0.1em;
   padding-right: 0.3em;
+}
+
+.stats {
+  height: 1em !important;
+  width: 1em !important;
+  vertical-align: -0.1em;
+  padding-right: 0 !important;
 }
 
 /* could potentially be used, but finnicky on mobile */
