@@ -32,7 +32,7 @@ goodtags = ['a', 'p', 'strong', 'b', 'em', 'i', 'ul', 'ol', 'li', 'br', 'blockqu
 safe = ['br', 'hr']
 
 def getfilename(url):
-  filename = url.split('/')[-1] + ".html"
+  filename = url.split('/')[-1].split('?')[0] + ".html"
   if os.path.isfile('out/' + filename):
     print("File " + filename + " already exists")
     quit()
