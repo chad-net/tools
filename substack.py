@@ -11,6 +11,8 @@ from chadnet import escape, gold, getpath
 
 location = getpath(__file__)
 
+version = "1.2"
+
 image = False
 
 months = {
@@ -188,7 +190,11 @@ def delemptytags(child, soup):
   clear = False
   while clear is False:
     clear = True
-    for d in child.descendants:
+    des = child.descendants
+    for d in des:
+      if d is None: #otherwise it seems to fail with NoneType
+        clear = False
+        break
       if isinstance(d, NavigableString):
         continue
       if d.name in safe:
@@ -215,7 +221,7 @@ handlers = {
 url = geturl()
 soup = downloadpage(url)
 filename = getfilename(url)
-gold('CHADNET SYSTEM ALPHA: SUBSTACK v1.1')
+gold(f'CHADNET SYSTEM ALPHA: SUBSTACK v{version}')
 print('URL:        ' + url)
 title = gettitle(soup)
 escapedtitle = escape(title)
@@ -257,7 +263,7 @@ with open(f'{location}/{head}', 'r') as headfile:
   for line in headfile:
     f.write(line.replace('CHADNET_SYSTEM_ALPHA_TITLE', escapedtitle).replace('CHADNET_SYSTEM_ALPHA_SUBTITLE', str(subtitle)))
 
-writetofile('<!-- This article was generated automatically using Chadnet System Alpha: SUBSTACK v1.0. If there are any stylistic errors or bugs, please report them. -->', f)
+writetofile(f'<!-- This article was generated automatically using Chadnet System Alpha: SUBSTACK v{version}. If there are any stylistic errors or bugs, please report them. -->', f)
 writetofile('<p>From the <a href="' + url + '" target="_blank">original article</a> on ' + date + ', by <a href="' + authorurl + '" target="_blank">' + escapedauthor + '</a>.</p>',f)
 
 text = soup.find('div', class_='available-content')
