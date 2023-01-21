@@ -3,10 +3,10 @@ shpath="$(dirname "$(readlink -f "$0")")"
 [ -f "$shpath/../chadnet-wiki.tar" ] && rm "$shpath/../chadnet-wiki.tar" && echo 'Removed old tar file'
 sed -i "s/<p>Download <a href=\"chadnet-wiki.tar\".*/<p>Wiki is being updated. Archive is still being generated. Refresh the page in one minute to download the archive.<\/p>/" "$shpath/../index.html"
 shopt -s extglob
-echo 'Changed file permissions'
 chmod 644 $shpath/../!(tools)
 chmod 755 $shpath/../files/
 chmod 644 $shpath/../files/*
+echo 'Changed file permissions'
 echo 'Creating tar file...'
 time tar --exclude="$shpath/../chadnet-wiki.zip" \
 --sort=name \
