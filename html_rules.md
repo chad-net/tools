@@ -23,7 +23,9 @@ if there are two successive images you put &lt;br&gt; between them
 
 ## what is removed
 we remove everything from a tags that isnt href and target="\_blank"
+
 all other attributes are removed from all tags except src for img which is dealt with separately
+
 we remove any other tags (span, etc)
 
 
