@@ -7,7 +7,7 @@ also: img
 
 'hr' can be used, but is not to be overused
 
-Base files in tools/templates)
+Base files in tools/templates/
 
 
 ## images
@@ -23,6 +23,9 @@ if there are two successive images you put <br> between them
 
 ## what is removed
 we remove everything from a tags that isnt href and target="_blank"
+
+all other attributes are removed from all tags except src for img which is dealt with separately
+
 we remove any other tags (span, etc)
 
 
