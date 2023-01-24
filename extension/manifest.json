@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Chadnet System Alpha: Browser",
+  "version": "1.0",
+
+  "description": "Chadnet System Alpha: Browser, the browser extension for schizophrenic scraping.",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*/*"
+      ],
+      "js": [ "content_script.js" ]
+    }
+  ],
+
+  "icons": {
+    "128": "icons/chad-square.png"
+  },
+
+  "permissions": [
+    "clipboardWrite"
+  ]
+
+
+}
+

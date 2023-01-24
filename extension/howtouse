@@ -1,0 +1,11 @@
+open firefox
+go to about:debugging
+go to "this firefox"
+click "load temporary add-on"
+navigate to this folder and click manifest.json
+
+if in private browsing mode, then also do this:
+go to about:addons
+go to "extensions"
+click on the Chadnet System Alpha browser adddon
+click "allow" on "run in private windows"

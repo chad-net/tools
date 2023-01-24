@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search — Chadnet</title>
+  <link rel="icon" href="chad.ico">
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Search — Chadnet">
+  <meta property="og:description" content="The greatest website on the interwebz!">
+  <meta property="og:image" content="https://wiki.chadnet.org/chad.png">
+</head>
+<body>
+  <script>var theme = localStorage.getItem('theme') || sessionStorage.getItem('theme'); if(theme){document.body.setAttribute('data-theme', theme);}</script>
+  <h1>Search</h1>
+  <div style="text-align: center;">
+    <a href="index.html"><img class="epic" src="chad.png"></a>
+  </div>
+  <hr>
+  <p><a href="index.html">Home</a></p>
+  <p>This searches only titles. Search is case-insensitive.</p>
+  <noscript><p><strong>Requires JavaScript, as this search is also meant to work offline.</strong></p></noscript>
+  <div style="text-align: center;">
+    <input type="text" id="s" autofocus>
+    <input id="b" type="button" value="Search" onClick="displayContents(0)">
+  </div>
+  <p id="update"></p>
+  <hr>
+  <div id="results"></div>
+
+<script>
+  /* pray */
+  var troll = document.getElementById("s");
+  troll.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      document.activeElement.blur();
+      displayContents(0);
+    }
+  });
+
+var funny = 0;
+var funnypos = 0;
+var temp = "";
+var shown = 2000;
+var funnytemp = 0;
+var funnylimit = 2000;
+var current = 0;
+function displayContents(more) {
+  console.log(more);
+  console.log(funny);
+  console.log(funnypos);
+  if(more == 0) {
+    funny = 0;
+    funnypos = 0;
+    shown = funnylimit;
+    for(let i = 0; i < current; i++) {
+      document.getElementsByClassName("category")[0].remove();
+    }
+    current = 0;
+    document.getElementById("results").innerHTML = "<ul class='category'></ul>";
+  } else {
+    if(funnytemp-funnylimit >= funnylimit) {
+      shown+=funnylimit;
+    } else {
+      shown+=funnytemp-funnylimit;
+    }
+    document.getElementsByClassName("C")[0].remove();
+    current++;
+    var heheul = document.createElement("ul");
+    heheul.className="category";
+    document.getElementById("results").appendChild(heheul);
+  }
+  temp = "";
+  var needle = document.getElementById("s").value.toLowerCase();
+  if (needle.length < 2) {
+    document.getElementsByClassName("category")[current].innerHTML = "You must enter at least 2 characters.";
+  } else {
+    needle = needle.replaceAll("&", "and");
+    needle = needle.replaceAll("<", "&lt;");
+    needle = needle.replaceAll(">", "&gt;");
+    needle = needle.replaceAll("—", "");
+    needle = needle.replaceAll("-", "");
+    needle = needle.replaceAll("'", "");
+    needle = needle.replaceAll("\"", "");
+    needle = needle.replaceAll(".", "");
+    needle = needle.replaceAll(",", "");
+    needle = needle.replaceAll(":", "");
+    needle = needle.replaceAll(";", "");
+    needle = needle.replaceAll("!", "");
+    needle = needle.replaceAll("¡", "");
+    needle = needle.replaceAll("|", "");
+    needle = needle.replaceAll("å", "a");
+    needle = needle.replaceAll("ä", "a");
+    needle = needle.replaceAll("é", "e");
+    needle = needle.replaceAll("ó", "o");
+    needle = needle.replaceAll("ü", "u");
+    needle = needle.replaceAll("ö", "o");
+    needle = needle.replaceAll("á", "a");
+    needle = needle.replace(/\s\s+/g, " ");
+    needle = needle.replace(/^\s+/g, "");
+    needle = needle.replace(/\s+$/g, "");
+    needle = needle.toLowerCase();
+    console.log(needle);
+    console.log(funnytemp);
+    funnytemp = 0;
+    if(more != 0) { funnypos += 7; }
+    for(var i = funnypos; i < thetext.length; i+=7) {
+      if(thetext[i].indexOf(needle) !== -1) {
+        if(more == 0) { funny++; }
+        funnytemp++;
+        if(funnytemp <= funnylimit) {
+          funnypos = i;
+          if(thetext[i+6] == 1) {
+            temp += "<li><img src=\"" + thetext[i+5] + "\" draggable=\"false\"><a href=\"" + thetext[i+4] + "\" target=\"_blank\">" + thetext[i+1] + "</a> " + thetext[i+3] + "</li>";
+          } else {
+            temp += "<li><img src=\"" + thetext[i+5] + "\" draggable=\"false\"><a href=\"" + thetext[i+4] + "\">" + thetext[i+1] + "</a> " + thetext[i+3] + "</li>";
+          }
+        }
+        continue;
+      }
+      if(thetext[i+2].indexOf(needle) !== -1) {
+        if(more == 0) { funny++; }
+        funnytemp++;
+        if(funnytemp <= funnylimit) {
+          funnypos = i;
+          if(thetext[i+6] == 1) {
+            temp += "<li><img src=\"" + thetext[i+5] + "\" draggable=\"false\"><a href=\"" + thetext[i+4] + "\" target=\"_blank\">" + thetext[i+1] + "</a> " + thetext[i+3] + "</li>";
+          } else {
+            temp += "<li><img src=\"" + thetext[i+5] + "\" draggable=\"false\"><a href=\"" + thetext[i+4] + "\">" + thetext[i+1] + "</a> " + thetext[i+3] + "</li>";
+          }
+        }
+      }
+    }
+    var moreres = document.createElement("p");
+    moreres.className = "C";
+    if(funny > funnylimit) {
+      if(funnytemp-funnylimit >= funnylimit) {
+        moreres.innerHTML+="<a href='javascript:void(0);' onclick='displayContents(1);'>Show 2000 more results</a>";
+      } else if(funnytemp-funnylimit < funnylimit && funnytemp-funnylimit > 0) {
+        moreres.innerHTML+="<a href='javascript:void(0);' onclick='displayContents(1);'>Show "+String(funnytemp-funnylimit)+" more results</a>";
+      }
+      document.getElementById("update").innerHTML = "Results: "+String(funny)+" / "+String(thetext.length/7)+" <span class='right'>Displaying "+String(shown)+"</span>";
+    } else {
+      document.getElementById("update").innerHTML = "Results: "+String(funny)+" / "+String(thetext.length/7);
+    }
+    console.log(moreres.innerHTML);
+    document.getElementsByClassName("category")[current].innerHTML += temp;
+    document.getElementsByClassName("category")[current].appendChild(moreres);
+    if (funny == 0) {
+      document.getElementsByClassName("category")[current].innerHTML = "No results.";
+    }
+  }
+}
+const thetext = [
