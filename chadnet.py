@@ -25,36 +25,6 @@ def gold(text):
 def getpath(filevar):
   return str(Path(filevar).resolve().parent)
 
-def removeattrs(tag, soup):
-  target = True
-  if tag.name != 'a':
-    tag.attrs = {}
-  else:
-    attrs = dict(tag.attrs)
-    for attr in attrs:
-      if attr == 'class':
-        if tag['class'][0] == 'footnote-anchor':
-          tag.attrs['href'] = '#' + tag.text
-          tag.wrap(soup.new_tag('sup'))
-          target = False
-          if 'target' in attrs:
-            del tag.attrs['target']
-        del tag.attrs[attr]
-      elif attr != 'href':
-        del tag.attrs[attr]
-    if target is True:
-      tag.attrs['target'] = '_blank'
-  return tag
-
-def deldescendantattrs(soup, realsoup):
-  if soup is None:
-    return None
-  soup = removeattrs(soup, realsoup)
-  for child in soup.descendants:
-    if isinstance(child, Tag):
-      child = removeattrs(child, realsoup)
-  return soup
-
 def delemptytags(child, soup):
   if child is None:
     return None

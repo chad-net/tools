@@ -7,11 +7,11 @@ import re
 from urllib.parse import urlparse
 import random, string
 import datetime
-from chadnet import escape, gold, getpath, removeattrs, deldescendantattrs, delemptytags
+from chadnet import escape, gold, getpath, delemptytags
 
 location = getpath(__file__)
 
-version = "1.2"
+version = "1.3"
 
 image = False
 
@@ -73,6 +73,36 @@ def getauthor(soup):
 
 def getauthorurl(url):
   return "https://" + url.split('/')[-3] + "/"
+
+def removeattrs(tag, soup):
+  target = True
+  if tag.name != 'a':
+    tag.attrs = {}
+  else:
+    attrs = dict(tag.attrs)
+    for attr in attrs:
+      if attr == 'class':
+        if tag['class'][0] == 'footnote-anchor' or tag['class'][0] == 'footnote-hovercard-target':
+          tag.attrs['href'] = '#' + tag.text
+          tag.wrap(soup.new_tag('sup'))
+          target = False
+          if 'target' in attrs:
+            del tag.attrs['target']
+        del tag.attrs[attr]
+      elif attr != 'href':
+        del tag.attrs[attr]
+    if target is True:
+      tag.attrs['target'] = '_blank'
+  return tag
+
+def deldescendantattrs(soup, realsoup):
+  if soup is None:
+    return None
+  soup = removeattrs(soup, realsoup)
+  for child in soup.descendants:
+    if isinstance(child, Tag):
+      child = removeattrs(child, realsoup)
+  return soup
 
 def deltags(soup):
   for tag in soup.findAll(True):
@@ -141,10 +171,10 @@ def handlefootnote(child, soup, f):
   if child.name != 'div':
     return
   footnote = handletag(child.div.p, soup)
-  footnote.string = " " + str(footnote.string)
   number = soup.new_tag("sup")
-  number.attrs['id'] = child.a.text
   number.string = child.a.text
+  footnote.attrs['id'] = child.a.text
+  footnote.insert(0, " ")
   footnote.insert(0, number)
   writetofile(footnote, f)
 
@@ -219,6 +249,9 @@ for child in text.div.children:
         continue
 
     if child.name in ['p', 'ul', 'ol', 'blockquote', 'pre']:
+      if child.has_attr('class'):
+        if child['class'][0] == 'button-wrapper':
+          continue
       image = False
       writetofile(handletag(child, soup), f)
 
