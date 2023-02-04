@@ -205,7 +205,6 @@ print("Categories: " + str(catcount))
 with open(f'{location}/CHADNET_LINK_COUNT', 'w') as f:
   f.write(str("{:,}".format(linkcount)))
 rc = call(f'{location}/update.sh')
-print("Updated index.html")
 
 cats = joindb(cats, links)
 #print(cats)
