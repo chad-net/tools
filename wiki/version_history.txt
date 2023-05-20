@@ -1,0 +1,12 @@
+-- Version History --
+3.0 -- initial
+
+3.1 (Mar 29, 2023)
+* updated search
+
+3.2 (May 20, 2023)
+* massively improved code readability
+* split code into several files
+* added starred link functionality
+* removed external 'update.sh' file and 'chadnet.py' dependency
+* fixed bug where search didn't convert '&' properly
