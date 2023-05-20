@@ -14,7 +14,7 @@ locations, see the `constants/paths.py` file.
 
 ## How to run
 
-Go back to the tools folder and see the `wiki.sh` file.
+Go back to the `../tools/` folder and see the `wiki.sh` file.
 
 **NOTE: ONLY RUNS ON LINUX OR MACOS.**
 
