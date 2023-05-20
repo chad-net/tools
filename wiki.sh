@@ -1,9 +1,6 @@
 #!/bin/bash
+# you can do the following: alias wiki='source ~/wiki_dir/tools/wiki.sh'
 
-# run file from anywhere
-shpath="$(dirname "$(readlink -f "$0")")"
-pushd $shpath > /dev/null
-
-python3 -m wiki.main
-
-popd > /dev/null
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+python -m wiki.main
