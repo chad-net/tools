@@ -10,3 +10,6 @@
 * added starred link functionality
 * removed external 'update.sh' file and 'chadnet.py' dependency
 * fixed bug where search didn't convert '&' properly
+
+3.2.1 (May 25, 2023)
+* small fix: removed lstrip, make it actually remove prefix properly
