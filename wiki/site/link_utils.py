@@ -1,3 +1,9 @@
+def remove_prefix(text, prefix):
+	if text.startswith(prefix):
+		return text[len(prefix):]
+	return text
+
+
 def get_link_icon_filename(url):
 	if url.startswith('https://www.youtube.com'):
 		icon_filename = 'yt.svg'
@@ -23,7 +29,8 @@ def get_link_icon_filename(url):
 
 	return icon_filename
 
+
 def update_url_and_check_if_opens_in_new_tab(url):
 	opens_in_new_tab = url.startswith('!')
-	url = url.lstrip('!') if opens_in_new_tab else url
+	url = remove_prefix(url, '!') if opens_in_new_tab else url
 	return url, opens_in_new_tab

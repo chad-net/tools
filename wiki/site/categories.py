@@ -35,7 +35,7 @@ def join_cats_and_links(cats, links):
 		# loop over every category link is under
 		for cat_url in link['cats']:
 			is_starred_link = cat_url.startswith('~')
-			cat_url = cat_url.lstrip('~')
+			cat_url = link_utils.remove_prefix(cat_url, '~')
 			# loop over all category and find the current one
 			if cat_url in cat_urls:
 				# append to appropriate link list
