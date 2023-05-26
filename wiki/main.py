@@ -1,4 +1,5 @@
 import time
+import sys
 from .constants import version, paths, options
 from .logging import log
 from .db.backup import backup_db
@@ -11,9 +12,19 @@ from .site.search import make_search_page
 from .site.change_file_permissions import change_file_permissions
 from .performance_debug import debug, remove_debug_files
 
-start_time = time.perf_counter()
 
 def run_wiki_system():
+	# move this elsewhere
+	news_text = None
+	if 'news' in sys.argv:
+		try:
+			news_text = input('News: ')
+		except KeyboardInterrupt:
+			print('\n\033[38;2;255;165;0mINFO: Cancelled\033[0m')
+			return
+
+	start_time = time.perf_counter()
+
 	module_timer = start_time
 
 	backup_db(paths.WIKI_DIR, 'db.chad')
@@ -47,7 +58,7 @@ def run_wiki_system():
 	write_db_file(paths.WIKI_DIR / 'cat.chad', cats_db)
 	module_timer = log.module_execution_time(module_timer, 'Updated database files')
 
-	update_index_page(formatted_total_link_count)
+	update_index_page(formatted_total_link_count, news_text)
 	module_timer = log.module_execution_time(module_timer, 'Updated index.html')
 
 	make_cat_pages(cats_db, links_db)

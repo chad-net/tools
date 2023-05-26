@@ -15,4 +15,5 @@
 * small fix: removed lstrip, make it actually remove prefix properly
 
 3.2.2 (May 26, 2023)
-* slightly changed index page updating logic
+* changed index page updating logic
+* added ability to add news
