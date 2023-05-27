@@ -14,7 +14,7 @@ def prepare_text_for_search(text):
 
 def get_head_template():
 	with open(paths.TEMPLATES_DIR / 'HEAD_SEARCH.html', 'r', encoding='utf8') as head:
-		return head.read().splitlines()
+		return '\n'.join(head.read().splitlines())
 
 
 def get_new_tab_line(opens_in_new_tab):
